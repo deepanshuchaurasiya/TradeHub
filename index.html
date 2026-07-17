@@ -77,6 +77,30 @@ body{min-height:100vh;display:flex;justify-content:center;align-items:center;pad
 .rb-footer-txt{font-size:11px;color:#3a506e;font-weight:500;}
 .rb-agency{font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:#5599ff;text-decoration:none;background:rgba(42,127,255,0.05);border:1px solid rgba(42,127,255,0.2);padding:6px 12px;border-radius:8px;transition:all 0.2s;}
 .rb-agency:hover{background:rgba(42,127,255,0.1);border-color:rgba(42,127,255,0.4);}
+
+/* Custom Countdown Timer Styling */
+.rb-redirect-timer {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 11px;
+  color: #82b7ff;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  background: rgba(42, 127, 255, 0.05);
+  border: 1px dashed rgba(42, 127, 255, 0.2);
+  padding: 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  animation: pulse 2s infinite alternate;
+}
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
 </style>
 </head>
 <body>
@@ -132,8 +156,33 @@ body{min-height:100vh;display:flex;justify-content:center;align-items:center;pad
       <div class="rb-footer-txt">@Adzonn · Knowledge first</div>
       <a href="#" target="_blank" class="rb-agency">📱 SIVIADSAGENCY</a>
     </div>
+
+    <!-- Ekdam Niche Countdown Timer Element -->
+    <div class="rb-redirect-timer" id="countdown-wrapper">
+      ⚡ Redirecting in <span id="timer-count">1</span>s...
+    </div>
   </div>
 </div>
+
+<!-- Auto-Redirect Script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var timeLeft = 1; // 2 seconds countdown
+  var timerText = document.getElementById("timer-count");
+  var targetUrl = "https://t.me/+mLedrcjIkT81MjA1";
+
+  var countdownInterval = setInterval(function() {
+    timeLeft--;
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      document.getElementById("countdown-wrapper").innerHTML = "⚡ Redirecting now...";
+      window.location.href = targetUrl;
+    } else {
+      timerText.textContent = timeLeft;
+    }
+  }, 1000);
+});
+</script>
 
 </body>
 </html>
